@@ -19,7 +19,7 @@ dag = DAG(
     catchup=False,
 )
 
-# Define tasks in your DAG
+
 # Task to run the Hadoop streaming job
 run_hadoop_job = BashOperator(
     task_id='run_hadoop_job',
