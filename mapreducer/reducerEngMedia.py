@@ -6,7 +6,7 @@ current_has_media = None
 toot_count = 0
 
 for line in sys.stdin:
-    post_id, has_media, count = line.strip().split('\t')
+    has_media, count = line.strip().split('\t')
     
     if current_has_media == has_media:
         toot_count += int(count)

@@ -31,8 +31,8 @@ from hdfs import InsecureClient
 
 # HBase connection parameters
 hbase_host = '127.0.0.1'  # HBase host
-hbase_port = 16010       # HBase port
-hbase_table_name = 'table_utilisateurs'
+hbase_port = 9090       # HBase port
+hbase_table_name = 'user'
 
 # HDFS client
 hdfs_url = 'http://localhost:9870'
@@ -56,10 +56,7 @@ with hdfs_client.read(output_file_path) as reader:
         if len(parts) == 2:
             username, followers_count = parts
             # Insert the data into HBase
-            table.put(username, {"informations:followers_count": followers_count})
-
-
-
+            table.put(username, {"info:test": followers_count})
 # Close the HBase connection
 connection.close()
 
