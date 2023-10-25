@@ -12,7 +12,7 @@ default_args = {
 
 # Create an instance of the DAG
 dag = DAG(
-    'firstDag',
+    'Dagurl',
     default_args=default_args,
     description='Data pipeline for collecting and analyzing data from Mastodon',
     schedule_interval=timedelta(minutes=2),  # Updated to run every 2 minutes
@@ -23,7 +23,7 @@ dag = DAG(
 # Task to run the Hadoop streaming job
 run_hadoop_job = BashOperator(
     task_id='run_hadoop_job',
-    bash_command="hadoop jar /home/hadoop/mastodon/hadoop-streaming-2.7.3.jar -input /Mostodon/Raw/mastodon_data_2023-10-23.json -output /Mostodon/Raw/output -mapper /home/hadoop/mastodon/mapper.py -reducer /home/hadoop/mastodon/reducer.py",
+    bash_command="hadoop jar /home/hadoop/mastodon/hadoop-streaming-2.7.3.jar -input /Mostodon/Raw/mastodon_data_2023-10-23.json -output /Mostodon/Raw/urlExternOutput -mapper /home/hadoop/mastodon/mapperURLex.py -reducer /home/hadoop/mastodon/reducerURLex.py",
     dag=dag,
 )
 
